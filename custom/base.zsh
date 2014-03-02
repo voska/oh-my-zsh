@@ -4,6 +4,11 @@ compinit -C
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
   'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
+# Shell options
+setopt autocd
+setopt extendedglob
+autoload -U zmv
+
 # Miscellaneous aliases
 alias mycc="gcc -Wall -Wextra -Werror -std=c99 -pedantic -g -O2"
 alias more="less"
@@ -51,10 +56,6 @@ alias pull="git pull"
 # Useful environment variables
 export EDITOR=vim
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
-
-# Shell options
-setopt autocd
-setopt extendedglob
 
 # Change terminal title
 title() {
