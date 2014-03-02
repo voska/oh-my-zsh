@@ -173,7 +173,7 @@ alias valgrind-leak='valgrind --leak-check=full --show-reachable=yes'
 
 # Enable color support of ls and also add handy aliases
 if [[ `uname` = 'Darwin' ]]; then
-  alias ls='ls -G'
+  alias ls='gls --color=auto'
 else
   alias ls='ls --color=auto'
 fi
