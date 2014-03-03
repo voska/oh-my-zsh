@@ -116,8 +116,10 @@ pkupdate() {
 
 # Pull every git directory in the pwd.
 pull_with_report() {
+  local dir
+  dir="$1"
   if [[ -d $1/.git ]]; then
-    echo `echo $dir | sed 's/.|\///g'` >&2
+    echo $(echo $dir | sed 's/.|\///g') >&2
   fi
   out=`git --git-dir=$1/.git --work-tree=$PWD/$1 pull 2>/dev/null`
   if [[ -n $(echo $out | grep "Already up-to-date") ]]; then
@@ -129,9 +131,9 @@ pull_with_report() {
 
 pulls() {
   $(
-  dirs=`find . -maxdepth 1 -type d`
-  for dir in $dirs; do
-    pull_with_report $dir > /dev/null &
+  local dirs
+  for dir in */; do
+    pull_with_report "$dir" > /dev/null &
   done
   wait
   )
