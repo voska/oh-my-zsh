@@ -1,16 +1,22 @@
+# Shell options
+setopt autocd
+setopt extendedglob
+unsetopt sharehistory
+
+# Load more commands
+autoload -U zmv
+autoload -U zargs
+
 ## Completions
 autoload -U compinit
 compinit -C
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
   'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-# Shell options
-setopt autocd
-setopt extendedglob
-autoload -U zmv
+# Vim mode
+bindkey -v
 
 # Miscellaneous aliases
-alias mycc="gcc -Wall -Wextra -Werror -std=c99 -pedantic -g -O2"
 alias more="less"
 alias dirstat="du -d 1 -h | sort -hr | head -n 11"
 alias ip="ifconfig | grep 'inet '"
