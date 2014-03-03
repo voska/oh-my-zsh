@@ -1,6 +1,7 @@
 # Shell options
 setopt autocd
 setopt extendedglob
+setopt transientrprompt
 unsetopt sharehistory
 
 # Load more commands
