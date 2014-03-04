@@ -1,7 +1,10 @@
 # Shell options
 setopt AUTO_CD
+setopt CORRECT_ALL
 setopt EXTENDED_GLOB
+setopt SHORT_LOOPS
 setopt TRANSIENT_R_PROMPT
+
 unsetopt SHARE_HISTORY
 
 # Load more commands
@@ -16,31 +19,6 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
 
 # Vim mode
 bindkey -v
-
-# Miscellaneous aliases
-alias more="less"
-alias dirstat="du -d 1 -h | sort -hr | head -n 11"
-alias ip="ifconfig | grep 'inet '"
-alias copy="xclip -selection clipboard"
-
-if [[ $(uname) = 'Linux' ]]; then
-  alias open="xdg-open"
-fi
-
-# Encryption functions
-ssl_encrypt() {
-  openssl aes-256-cbc -a -salt -in $1 -out $2
-}
-ssl_decrypt() {
-  openssl aes-256-cbc -a -d -in $1 -out $2
-}
-
-if [[ `uname` = 'Darwin' ]]; then
-  alias top="top -o cpu"
-fi
-
-# Fun bit of information
-alias profileme="history | awk '{print \$2}' | awk 'BEGIN {FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 30 | sort -rn"
 
 # ls aliases
 alias sl="ls"
@@ -59,6 +37,31 @@ alias tigs="tig status"
 alias amend="git commit --amend"
 alias commit="git commit"
 alias pull="git pull"
+
+# Miscellaneous aliases
+alias more="less"
+alias dirstat="du -d 1 -h | sort -hr | head -n 11"
+alias ip="ifconfig | grep 'inet '"
+alias copy="xclip -selection clipboard"
+
+if [[ $(uname) = 'Linux' ]]; then
+  alias open="xdg-open"
+fi
+
+if [[ `uname` = 'Darwin' ]]; then
+  alias top="top -o cpu"
+fi
+
+# Encryption functions
+ssl_encrypt() {
+  openssl aes-256-cbc -a -salt -in $1 -out $2
+}
+ssl_decrypt() {
+  openssl aes-256-cbc -a -d -in $1 -out $2
+}
+
+# Fun bit of information
+alias profileme="history | awk '{print \$2}' | awk 'BEGIN {FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 30 | sort -rn"
 
 # Useful environment variables
 export EDITOR=vim
