@@ -25,12 +25,9 @@ alias droiddisconnect="sudo umount /media/nexus4"
 
 # Useful environment variables
 export PATH=$PATH:~/google_appengine
-export PATH=$PATH:~/play
 export PATH=$PATH:~/intellij-idea
-export PATH=$PATH:~/liteide/bin
 export PATH=$PATH:~/Dropbox/bin
 export PATH=$PATH:/usr/lib/smlnj/bin
-export PATH=$PATH:/usr/local/lib/cc0/bin
 export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=512m"
 export EDITOR=vim
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages

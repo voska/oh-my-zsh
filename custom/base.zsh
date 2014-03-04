@@ -3,7 +3,6 @@ setopt AUTO_CD
 setopt CORRECT_ALL
 setopt EXTENDED_GLOB
 setopt SHORT_LOOPS
-setopt TRANSIENT_R_PROMPT
 
 unsetopt SHARE_HISTORY
 
