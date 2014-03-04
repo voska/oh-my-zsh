@@ -10,10 +10,14 @@ alias copy="xclip -selection clipboard"
 alias add="git add"
 
 # Important directories
-alias cmu="cd ~/Dropbox/cmu"
+CMU="$HOME/Dropbox/cmu/"
+alias cmu="~CMU"
 alias gigastorm="cd ~/Dropbox/GigaStorm"
-alias programming="cd ~/Dropbox/programming"
-alias pegasus="cd ~/Dropbox/programming/pegasus"
+
+PROGRAMMING="$HOME/Dropbox/programming/"
+alias programming="~PROGRAMMING"
+PEGASUS="$HOME/Dropbox/programming/pegasus/"
+alias pegasus="~PEGASUS"
 
 # Android aliases
 alias droidconnect="sudo mtpfs -o allow_other /media/nexus4"
