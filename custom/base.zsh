@@ -1,8 +1,8 @@
 # Shell options
-setopt autocd
-setopt extendedglob
-setopt transientrprompt
-unsetopt sharehistory
+setopt AUTO_CD
+setopt EXTENDED_GLOB
+setopt TRANSIENT_R_PROMPT
+unsetopt SHARE_HISTORY
 
 # Load more commands
 autoload -U zmv
