@@ -18,6 +18,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
 
 # Vim mode
 bindkey -v
+bindkey '^R' history-incremental-search-backward
 
 # ls aliases
 alias sl="ls"

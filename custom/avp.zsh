@@ -34,7 +34,7 @@ export EDITOR=vim
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
 
 mysql_reset() {
-  DIR=$(pwd)
+  local DIR=$(pwd)
   cd ~/Dropbox/programming/pegasus/tools
   cat create_tables.sql create_testdata.sql | mysqlu
   cd $DIR
