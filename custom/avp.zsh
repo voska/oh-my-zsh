@@ -11,12 +11,13 @@ alias add="git add"
 
 # Important directories
 CMU="$HOME/Dropbox/cmu/"
+PROGRAMMING="$HOME/Dropbox/programming/"
+PEGASUS="$HOME/Dropbox/programming/pegasus/"
+VIM="$HOME/.vim"
+
 alias cmu="~CMU"
 alias gigastorm="cd ~/Dropbox/GigaStorm"
-
-PROGRAMMING="$HOME/Dropbox/programming/"
 alias programming="~PROGRAMMING"
-PEGASUS="$HOME/Dropbox/programming/pegasus/"
 alias pegasus="~PEGASUS"
 
 # Android aliases
