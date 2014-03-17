@@ -3,9 +3,10 @@ PS1=\
 '%(1j,%F{cyan}[%j]%F{reset},)'\
 ':'\
 '%B%F{blue}%~%F{reset}%b'\
-'%F{red}$(git_prompt_string)%F{reset}$ '
+'%F{red}$(git_prompt_string)%F{reset}'\
+'%(!,#,$) '
 
-RPS1="%(?,,%F{red}%? :(%F{reset} )%F{cyan}[%*]%F{reset}"
+RPS1='%(?,,%F{red}[%?]%F{reset} )%F{cyan}[%*]%F{reset}'
 
 GIT_PROMPT_SYMBOL=""
 GIT_PROMPT_PREFIX="%{$fg[red]%} %{$reset_color%}"
