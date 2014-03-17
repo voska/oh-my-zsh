@@ -43,6 +43,7 @@ alias more="less"
 alias dirstat="du -d 1 -h | sort -hr | head -n 11"
 alias ip="ifconfig | grep 'inet '"
 alias copy="xclip -selection clipboard"
+alias v="vim"
 
 if [[ $(uname) = 'Linux' ]]; then
   alias open="xdg-open"
@@ -50,6 +51,7 @@ fi
 
 if [[ `uname` = 'Darwin' ]]; then
   alias top="top -o cpu"
+  alias sort="gsort"
 fi
 
 # Encryption functions
