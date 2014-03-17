@@ -34,6 +34,9 @@ export JAVA_HOME="$(/usr/libexec/java_home)"
 export EDITOR=vim
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
 
+if [[ $(uname) = 'Darwin' ]]; then
+  alias mysql_start="mysqld_safe"
+fi
 mysql_reset() {
   local DIR=$(pwd)
   cd ~/Dropbox/programming/pegasus/tools
