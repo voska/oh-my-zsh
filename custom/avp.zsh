@@ -30,10 +30,12 @@ export PATH=$PATH:~/intellij-idea
 export PATH=$PATH:~/Dropbox/bin
 export PATH=$PATH:/usr/lib/smlnj/bin
 export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=512m"
-export JAVA_HOME="$(/usr/libexec/java_home)"
 export EDITOR=vim
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
 
+if [[ $(uname) = 'Darwin' ]]; then
+  export JAVA_HOME="$(/usr/libexec/java_home)"
+fi
 mysql_reset() {
   local DIR=$(pwd)
   cd ~/Dropbox/programming/pegasus/tools
