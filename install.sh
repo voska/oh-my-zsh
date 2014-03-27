@@ -4,6 +4,8 @@
 
 DIR=$(pwd)
 
+git submodule update --init
+
 cd ..
 ln -i -s $DIR/zshrc .zshrc
 
