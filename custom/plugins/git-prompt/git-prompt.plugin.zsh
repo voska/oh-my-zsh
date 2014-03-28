@@ -14,6 +14,7 @@ GIT_PROMPT_STASHED="%{$fg_bold[magenta]%}S%{$reset_color%}"
 GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%}●%{$reset_color%}"
 GIT_PROMPT_MODIFIED="%{$fg_bold[yellow]%}●%{$reset_color%}"
 GIT_PROMPT_STAGED="%{$fg_bold[green]%}●%{$reset_color%}"
+GIT_PROMPT_CLEAN="%{$fg_bold[blue]%}✓%{$reset_color%}"
 
 # Show Git branch/tag, or name-rev if on detached head
 parse_git_branch() {
@@ -25,6 +26,7 @@ parse_git_state() {
 
   # Compose this value via multiple conditional appends.
   local GIT_STATE=""
+  local DIRTY=""
 
   local NUM_AHEAD="$(git log --oneline @{u}.. 2> /dev/null | wc -l | tr -d ' ')"
   if [ "$NUM_AHEAD" -gt 0 ]; then
@@ -39,6 +41,7 @@ parse_git_state() {
   local GIT_DIR="$(git rev-parse --git-dir 2> /dev/null)"
   if [ -n $GIT_DIR ] && test -r $GIT_DIR/MERGE_HEAD; then
     GIT_STATE=$GIT_STATE$GIT_PROMPT_MERGING
+    DIRTY=1
   fi
 
   if [[ -n $(git stash list 2> /dev/null) ]]; then
@@ -47,14 +50,21 @@ parse_git_state() {
 
   if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
     GIT_STATE=$GIT_STATE$GIT_PROMPT_UNTRACKED
+    DIRTY=1
   fi
 
   if ! git diff --quiet 2> /dev/null; then
     GIT_STATE=$GIT_STATE$GIT_PROMPT_MODIFIED
+    DIRTY=1
   fi
 
   if ! git diff --cached --quiet 2> /dev/null; then
     GIT_STATE=$GIT_STATE$GIT_PROMPT_STAGED
+    DIRTY=1
+  fi
+
+  if [[ -z "$DIRTY" ]]; then
+    GIT_STATE=$GIT_STATE$GIT_PROMPT_CLEAN
   fi
 
   if [[ -n $GIT_STATE ]]; then
