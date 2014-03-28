@@ -7,7 +7,9 @@ PS1=\
 '%F{red}$(git_prompt_string)%F{reset}'\
 '%(!,#,$) '
 
-RPS1='%(?,,%F{red}[%?]%F{reset} )%F{cyan}[%*]%F{reset}'
+RPS1=\
+'%(?,,%F{red}[%?]%F{reset}, )'\
+'%F{cyan}[%*]%F{reset}'
 
 GIT_PROMPT_SYMBOL=""
 GIT_PROMPT_PREFIX=" "
