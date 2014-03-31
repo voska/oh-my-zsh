@@ -8,7 +8,7 @@ PS1=\
 '%(!,#,$) '
 
 RPS1=\
-'%(?,,%F{red}[%?]%F{reset}, )'\
+'%(?,%F{red}[%?]%F{reset} ,)'\
 '%F{cyan}[%*]%F{reset}'
 
 GIT_PROMPT_SYMBOL=""
