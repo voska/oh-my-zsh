@@ -1,6 +1,6 @@
 # Shell options
 setopt AUTO_CD
-setopt CORRECT_ALL
+setopt CORRECT
 setopt EXTENDED_GLOB
 setopt SHORT_LOOPS
 
