@@ -12,6 +12,7 @@ plugins+=(git-prompt)
 plugins+=(zsh-syntax-highlighting)
 plugins+=(npm)
 plugins+=(mvn)
+plugins+=(sublime)
 
 # Activate Oh my zsh
 source $ZSH/oh-my-zsh.sh
