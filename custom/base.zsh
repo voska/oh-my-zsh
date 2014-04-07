@@ -51,7 +51,7 @@ if [[ $(uname) = 'Linux' ]]; then
   alias open="xdg-open"
 fi
 
-if [[ `uname` = 'Darwin' ]]; then
+if [[ $(uname) = 'Darwin' ]]; then
   alias top="top -o cpu"
   alias sort="gsort"
 fi
