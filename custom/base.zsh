@@ -46,6 +46,7 @@ alias dirstat="du -d 1 -h | sort -hr | head -n 11"
 alias ip="ifconfig | grep 'inet '"
 alias copy="xclip -selection clipboard"
 alias v="vim"
+alias m="man"
 
 if [[ $(uname) = 'Linux' ]]; then
   alias open="xdg-open"
