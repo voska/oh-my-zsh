@@ -8,6 +8,10 @@ alias vimrc="vim ~/.vim/vimrc"
 alias copy="xclip -selection clipboard"
 alias add="git add"
 
+# AFS Mount points
+alias fsafs="sshfs avpatel@unix.andrew.cmu.edu: ~/afs"
+alias ufsafs="umount ~/afs"
+
 # Important directories
 CMU="$HOME/Dropbox/cmu/"
 PROGRAMMING="$HOME/Dropbox/programming/"
