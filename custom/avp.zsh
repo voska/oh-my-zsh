@@ -43,7 +43,7 @@ fi
 mysql_reset() {
   local DIR=$(pwd)
   cd ~/Dropbox/programming/pegasus/tools
-  cat create_tables.sql create_testdata.sql | mysqlu
+  cat create_tables.sql create_testdata.sql | mysqlu pegasus
   cd $DIR
 }
 

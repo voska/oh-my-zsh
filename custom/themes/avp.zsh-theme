@@ -2,7 +2,7 @@ PS1=\
 '%B%F{green}%n@%m%F{reset}%b'\
 '%(2L,%F{yellow}[%L]%F{reset},)'\
 '%(1j,%F{cyan}[%j]%F{reset},)'\
-':'\
+' '\
 '%B%F{blue}%~%F{reset}%b'\
 '%F{red}$(git_prompt_string)%F{reset}'\
 '%(!,#,$) '
