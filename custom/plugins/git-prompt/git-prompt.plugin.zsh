@@ -7,6 +7,7 @@ autoload -U colors && colors # Enable colors in prompt
 GIT_PROMPT_SYMBOL="%{$fg[blue]%}±"
 GIT_PROMPT_PREFIX="%{$fg[red]%}[%{$reset_color%}"
 GIT_PROMPT_SUFFIX="%{$fg[red]%}]%{$reset_color%}"
+GIT_PROMPT_AHEAD="%{$fg[blue]%}=%{$reset_color%}"
 GIT_PROMPT_AHEAD="%{$fg[red]%}ANUM%{$reset_color%}"
 GIT_PROMPT_BEHIND="%{$fg[cyan]%}BNUM%{$reset_color%}"
 GIT_PROMPT_MERGING="%{$fg_bold[magenta]%}⚡︎%{$reset_color%}"
@@ -28,14 +29,24 @@ parse_git_state() {
   local GIT_STATE=""
   local DIRTY=""
 
+  local EQUAL="1"
+
   local NUM_AHEAD="$(git log --oneline @{u}.. 2> /dev/null | wc -l | tr -d ' ')"
   if [ "$NUM_AHEAD" -gt 0 ]; then
     GIT_STATE=$GIT_STATE${GIT_PROMPT_AHEAD//NUM/$NUM_AHEAD}
+    EQUAL=""
   fi
 
   local NUM_BEHIND="$(git log --oneline ..@{u} 2> /dev/null | wc -l | tr -d ' ')"
   if [ "$NUM_BEHIND" -gt 0 ]; then
     GIT_STATE=$GIT_STATE${GIT_PROMPT_BEHIND//NUM/$NUM_BEHIND}
+    EQUAL=""
+  fi
+
+  if [ "$(git rev-parse --abbrev-ref --symbolic-full-name @{u} 2> /dev/null)" ]; then
+    if [ "$EQUAL" ]; then
+      GIT_STATE=${GIT_STATE}${GIT_PROMPT_EQUAL}
+    fi
   fi
 
   local GIT_DIR="$(git rev-parse --git-dir 2> /dev/null)"
