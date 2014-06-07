@@ -5,7 +5,7 @@ PS1=\
 ' '\
 '%B%F{blue}%~%F{reset}%b'\
 '%F{red}$(git_prompt_string)%F{reset}'\
-'%(!,#,$) '
+'%(!,#,») '
 
 RPS1=\
 '%(1?,%F{red}[%?]%F{reset} ,)'\
@@ -13,7 +13,8 @@ RPS1=\
 
 GIT_PROMPT_SYMBOL=""
 GIT_PROMPT_PREFIX=" "
-GIT_PROMPT_SUFFIX="%{$fg[red]%}%{$reset_color%}"
+GIT_PROMPT_SEPARATOR="%{$fg[red]%} %{$reset_color%}"
+GIT_PROMPT_SUFFIX="%{$fg[red]%} %{$reset_color%}"
 GIT_PROMPT_EQUAL="%{$fg[blue]%}‖%{$reset_color%}"
 GIT_PROMPT_AHEAD="%{$fg[green]%}↑%{$reset_color%}"
 GIT_PROMPT_BEHIND="%{$fg[cyan]%}↓%{$reset_color%}"

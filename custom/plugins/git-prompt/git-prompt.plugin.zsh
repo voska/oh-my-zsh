@@ -6,6 +6,7 @@ autoload -U colors && colors # Enable colors in prompt
 # Modify the colors and symbols in these variables as desired.
 GIT_PROMPT_SYMBOL="%{$fg[blue]%}±"
 GIT_PROMPT_PREFIX="%{$fg[red]%}[%{$reset_color%}"
+GIT_PROMPT_SEPARATOR="%{$fg[red]%} %{$reset_color%}"
 GIT_PROMPT_SUFFIX="%{$fg[red]%}]%{$reset_color%}"
 GIT_PROMPT_EQUAL="%{$fg[blue]%}=%{$reset_color%}"
 GIT_PROMPT_AHEAD="%{$fg[red]%}ANUM%{$reset_color%}"
@@ -79,7 +80,7 @@ parse_git_state() {
   fi
 
   if [[ -n $GIT_STATE ]]; then
-    echo "$GIT_PROMPT_PREFIX$GIT_STATE$GIT_PROMPT_SUFFIX"
+    echo "$GIT_STATE"
   fi
 
 }
@@ -88,6 +89,6 @@ parse_git_state() {
 git_prompt_string() {
   local git_where="$(parse_git_branch)"
   [ -n "$git_where" ] && \
-    echo "$GIT_PROMPT_SYMBOL$GIT_PROMPT_PREFIX%{$fg[red]%}${git_where#(refs/heads/|tags/)}$GIT_PROMPT_SUFFIX$(parse_git_state)"
+    echo "$GIT_PROMPT_SYMBOL$GIT_PROMPT_PREFIX%{$fg[red]%}${git_where#(refs/heads/|tags/)}$GIT_PROMPT_SEPARATOR$(parse_git_state)$GIT_PROMPT_SUFFIX"
 }
 
