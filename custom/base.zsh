@@ -27,6 +27,7 @@ alias la="ls -A"
 alias ll="ls -l"
 alias l1="ls -1"
 alias l="ls"
+alias lal='ls -al'
 
 # Configuration aliases
 alias zshrc="vim ~/.zshrc"
