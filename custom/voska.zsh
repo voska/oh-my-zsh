@@ -7,7 +7,7 @@ alias hide='defaults write com.apple.finder AppleShowAllFiles FALSE && killall F
 alias mysqlu="mysql -u root -p"""
 
 # eb Config
-export PATH=$PATH:~/bin/AWS-ElasticBeanstalk-CLI-2.6.3/eb/eb
+export PATH=$PATH:~/bin/AWS-ElasticBeanstalk-CLI-2.6.3/eb/macosx/python2.7/
 
 # Maven Config
 export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=512m"
