@@ -10,6 +10,7 @@ alias mysqlu="mysql -u root -p"""
 export PATH=$PATH:~/bin/AWS-ElasticBeanstalk-CLI-2.6.3/eb/macosx/python2.7/
 
 # Ruby Config
+source ~/.profile
 export PATH=$PATH:/usr/local/Cellar/ruby/2.1.1_1/bin/
 
 # Maven Config

@@ -18,3 +18,5 @@ plugins+=(colored-man)
 # Activate Oh my zsh
 source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
