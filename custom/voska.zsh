@@ -6,12 +6,10 @@ alias show='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Fi
 alias hide='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
 alias mysqlu="mysql -u root -p"""
 
+eval "$(rbenv init -)"
+
 # eb Config
 export PATH=$PATH:~/bin/AWS-ElasticBeanstalk-CLI-2.6.3/eb/macosx/python2.7
-
-# Ruby Config
-source ~/.profile
-export PATH=$PATH:/usr/local/Cellar/ruby/2.1.1_1/bin
 
 # Maven Config
 export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=512m"
