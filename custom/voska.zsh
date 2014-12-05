@@ -6,7 +6,10 @@ alias show='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Fi
 alias hide='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
 alias mysqlu="mysql -u root -p"""
 
+# Ruby config
 eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/shims:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
 
 # eb Config
 export PATH=$PATH:~/bin/AWS-ElasticBeanstalk-CLI-2.6.3/eb/macosx/python2.7
