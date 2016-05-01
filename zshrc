@@ -19,4 +19,8 @@ plugins+=(colored-man)
 source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Add ssl key & cert path
+export PATH=$PATH:$HOME/.ssl/server.key
+export PATH=$PATH:$HOME/.ssl/server.csr
+
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

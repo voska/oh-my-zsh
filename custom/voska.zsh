@@ -4,6 +4,7 @@ PEGASUS="$HOME/dev/pegasus/"
 # Aliases
 alias show='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
 alias hide='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
+alias brewski='brew update && brew upgrade --all && brew upgrade brew-cask; brew cleanup; brew cask cleanup; brew doctor'
 alias mysqlu="mysql -u root -p"""
 
 # Ruby config
