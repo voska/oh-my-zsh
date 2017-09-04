@@ -24,3 +24,4 @@ export PATH=$PATH:$HOME/.ssl/server.key
 export PATH=$PATH:$HOME/.ssl/server.csr
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="/usr/local/sbin:$PATH"
