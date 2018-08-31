@@ -1,19 +1,7 @@
-# Important Dirs
-PEGASUS="$HOME/dev/pegasus/"
-
 # Aliases
 alias show='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
 alias hide='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
-alias brewski='brew update && brew upgrade && brew cask upgrade && brew cleanup; brew doctor'
-alias mysqlu="mysql -u root -p"""
-
-# Ruby config
-
-# eb Config
-export PATH=$PATH:~/bin/AWS-ElasticBeanstalk-CLI-2.6.3/eb/macosx/python2.7
-
-# Maven Config
-export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=512m"
+alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
 
 # Java Config
 export JAVA_HOME=$(/usr/libexec/java_home)

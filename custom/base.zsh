@@ -41,7 +41,8 @@ alias commit="git commit"
 alias pull="git pull"
 
 # Miscellaneous aliases
-alias more="less"
+alias cat="bat"
+alias ping="prettyping"
 alias dirstat="du -d 1 -h | sort -hr | head -n 11"
 alias ip="ifconfig | grep 'inet '"
 alias v="vim"
@@ -86,12 +87,6 @@ alias profileme="history | awk '{print \$2}' | awk 'BEGIN {FS=\"|\"}{print \$1}'
 export EDITOR=vim
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
 
-# Change terminal title
-title() {
-  echo -n -e "\033]0;$1\007"
-}
-title "zsh"
-
 # Set up simple python web server
 # pyserver port sets up the server on port, with default port 8000.
 pyserver() {
@@ -115,27 +110,6 @@ pg_staging_log() {
 
 # Speedtest alias
 alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
-
-# Manual Package Update and Cleaning
-pkupdate() {
-  sudo echo "Arguments: $@"
-  Time="$(date +%s)"
-  echo -e "Starting Package Update\n"
-  echo -e "\nUpdating Repositories\n"
-  sudo apt-get $@ update
-  echo -e "\nUpdating Packages\n"
-  sudo apt-get $@ upgrade
-  echo -e "\nUpdating Distribution Packages\n"
-  sudo apt-get $@ dist-upgrade
-  echo -e "\nRemoving Unnecessary Packages\n"
-  sudo apt-get $@ autoremove --purge
-  echo -e "\nAutocleaning Package Download Files\n"
-  sudo apt-get $@ autoclean
-  echo -e "\nCleaning Package Download Files\n"
-  sudo apt-get $@ clean
-  Time="$(($(date +%s) - Time))"
-  echo -e "\nPackage Update Complete. Time Elapsed: ${Time}s"
-}
 
 # Pull every git directory in the pwd.
 pull_with_report() {
@@ -185,14 +159,8 @@ alias killz='killall -9 '
 alias hidden='ls -a | grep "^\..*"'
 alias rm='rm -i'
 alias shell='ps -p $$ -o comm='
-alias sml='rlwrap sml'
-alias math='rlwrap MathKernel'
-alias coin='rlwrap coin'
 alias a='alias'
 
-# C Aliases
-alias cc='gcc -Wall -W -ansi -pedantic -O2 '
-alias valgrind-leak='valgrind --leak-check=full --show-reachable=yes'
 
 # Enable color support of ls and also add handy aliases
 if [[ `uname` = 'Darwin' ]]; then
