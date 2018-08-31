@@ -103,11 +103,6 @@ randgen() {
   fi
 }
 
-# Tomcat logs
-pg_staging_log() {
-  ssh pg-dev "tail -n 500 -f /var/log/tomcat7/catalina.out"
-}
-
 # Speedtest alias
 alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
 

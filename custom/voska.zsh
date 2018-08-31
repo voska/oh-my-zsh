@@ -1,7 +1,7 @@
 # Aliases
 alias show='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
 alias hide='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
-alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
+alias brewski='brew update && brew upgrade && brew cask upgrade && brew cleanup -s && brew doctor; brew missing'
 
 # Java Config
 export JAVA_HOME=$(/usr/libexec/java_home)
