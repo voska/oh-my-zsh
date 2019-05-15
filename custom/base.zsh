@@ -30,14 +30,10 @@ alias l="ls"
 alias lal='ls -al'
 
 # Configuration aliases
-alias zshrc="vim ~/.zshrc"
 alias reload="source ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
 
 # Git aliases
 alias tigs="tig status"
-alias amend="git commit --amend"
-alias commit="git commit"
 alias pull="git pull"
 
 # Miscellaneous aliases
@@ -67,25 +63,11 @@ ssl_decrypt() {
   openssl aes-256-cbc -a -d -in $1 -out $2
 }
 
-# Randomness functions
-flipcoin() {
-  [[ $((RANDOM % 2)) == 0 ]] && echo TAILS || echo HEADS
-}
-rolldie() {
-  if [[ -n "$1" ]]; then
-    SIDES="$1"
-  else
-    SIDES=6
-  fi
-  echo $((RANDOM % $SIDES))
-}
-
 # Fun bit of information
 alias profileme="history | awk '{print \$2}' | awk 'BEGIN {FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 30 | sort -rn"
 
 # Useful environment variables
 export EDITOR=vim
-export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
 
 # Set up simple python web server
 # pyserver port sets up the server on port, with default port 8000.
@@ -170,4 +152,3 @@ qdict(){ grep $1 /usr/share/dict/words; }
 
 # Turn off the ability for other people to message your terminal using wall or write
 mesg n
-

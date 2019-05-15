@@ -11,7 +11,6 @@ plugins+=(git)
 plugins+=(git-prompt)
 plugins+=(zsh-syntax-highlighting)
 plugins+=(npm)
-plugins+=(mvn)
 plugins+=(sublime)
 plugins+=(colored-man)
 
@@ -23,5 +22,6 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:$HOME/.ssl/server.key
 export PATH=$PATH:$HOME/.ssl/server.csr
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="/usr/local/sbin:$PATH"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
