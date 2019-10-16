@@ -9,10 +9,13 @@ ZSH_THEME="voska"
 plugins=()
 plugins+=(git)
 plugins+=(git-prompt)
-plugins+=(zsh-syntax-highlighting)
-plugins+=(npm)
+plugins+=(rails)
+plugins+=(rvm)
 plugins+=(sublime)
-plugins+=(colored-man)
+plugins+=(sudo)
+plugins+=(tig)
+plugins+=(colored-man-pages)
+plugins+=(zsh-syntax-highlighting)
 
 # Activate Oh my zsh
 source $ZSH/oh-my-zsh.sh
