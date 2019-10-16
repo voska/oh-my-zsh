@@ -1,5 +1,7 @@
 locals.zsh
 log/.zsh_history
 projects.zsh
-*.swp
+
+# temp files directories
 cache/
+log/
