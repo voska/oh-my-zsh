@@ -27,6 +27,8 @@ export PATH=$PATH:$HOME/.ssl/server.csr
 
 export PATH="/usr/local/sbin:$PATH"
 
+export PATH=$PATH:/Users/matt/.cargo/bin
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
