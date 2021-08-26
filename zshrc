@@ -33,3 +33,6 @@ export PATH=$PATH:/Users/matt/.cargo/bin
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+# Add Brew to path.
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
