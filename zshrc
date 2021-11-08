@@ -7,14 +7,21 @@ ZSH_THEME="voska"
 
 # Set up plugins
 plugins=()
+plugins+=(colored-man-pages)
+plugins+=(gh)
 plugins+=(git)
+plugins+=(git-auto-fetch)
 plugins+=(git-prompt)
+plugins+=(heroku)
+plugins+=(macos)
+plugins+=(npm)
 plugins+=(rails)
 plugins+=(rvm)
 plugins+=(sublime)
 plugins+=(sudo)
-plugins+=(tig)
-plugins+=(colored-man-pages)
+plugins+=(vscode)
+plugins+=(yarn)
+plugins+=(zsh-interactive-cd)
 plugins+=(zsh-syntax-highlighting)
 
 # Activate Oh my zsh
