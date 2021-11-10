@@ -36,10 +36,13 @@ export PATH="/usr/local/sbin:$PATH"
 
 export PATH=$PATH:/Users/matt/.cargo/bin
 
+# Add JDK to path
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+# Add Brew to path.
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-
-# Add Brew to path.
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
