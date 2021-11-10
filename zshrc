@@ -34,7 +34,7 @@ export PATH=$PATH:$HOME/.ssl/server.csr
 
 export PATH="/usr/local/sbin:$PATH"
 
-export PATH=$PATH:/Users/matt/.cargo/bin
+export PATH=$PATH:$HOME/.cargo/bin
 
 # Add JDK to path
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
