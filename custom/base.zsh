@@ -113,6 +113,52 @@ pulls() {
   )
 }
 
+hey_gpt() {
+  local prompt=$1
+  local gpt=$(curl https://api.openai.com/v1/chat/completions -s \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+      "model": "gpt-4",
+      "messages": [{"role": "user", "content": "'$prompt'"}],
+      "temperature": 0.7
+  }')
+  echo $gpt | jq -r '.choices[0].message.content'
+}
+
+data_gpt() {
+  local prompt=$1
+  local data=$2
+  local prompt_input=$(echo "$prompt: $data" | string join ' ')
+
+  curl https://api.openai.com/v1/chat/completions -s \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+      "model": "gpt-4",
+      "messages": [{"role": "user", "content": "'$prompt_input'"}],
+      "temperature": 0.7
+  }' | jq -r '.choices[0].message.content'
+}
+
+img_gpt() {
+  local prompt=$1
+  local create_img=$(curl https://api.openai.com/v1/images/generations -s \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+      "prompt": "'$prompt'",
+      "n": 1,
+      "size": "1024x1024"
+  }')
+  echo $create_img | jq
+  local url=$(echo $create_img | jq -r '.data[0].url')
+  local rand_num=$((RANDOM%1000000+1))
+  curl -s $url -o img-"$rand_num".png
+}
+
+alias h='hey_gpt'
+
 # Define Color Variables for later usage
 c_red=$(tput setaf 1)
 c_green=$(tput setaf 2)
