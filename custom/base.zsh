@@ -55,6 +55,82 @@ if [[ $(uname) = 'Darwin' ]]; then
   alias sort="gsort"
 fi
 
+# Docker Shortcut Aliases
+alias d="docker"
+alias dc="docker-compose"
+
+# Container Management
+alias dps="docker ps"
+alias dpa="docker ps -a"
+alias dstart="docker start"
+alias dstop="docker stop"
+alias drestart="docker restart"
+alias dkill="docker kill"
+alias drm="docker rm"
+alias dprune="docker container prune -f"
+
+# Image Management
+alias di="docker images"
+alias dbuild="docker build -t"
+alias drmi="docker rmi"
+alias diprune="docker image prune -a -f"
+
+# Running Containers
+alias dr="docker run"
+alias dlog="docker logs"
+
+# Volume and Network Management
+alias dv="docker volume"
+alias dvls="docker volume ls"
+alias dvprune="docker volume prune -f"
+alias dn="docker network"
+alias dnls="docker network ls"
+alias dnprune="docker network prune -f"
+
+# System Cleanup
+alias ddu="docker system df"
+alias dclean="docker system prune -a -f"
+
+# Docker Compose Shortcuts
+alias dcu="docker-compose up -d"
+alias dcup="docker-compose up"
+alias dcd="docker-compose down"
+alias dcr="docker-compose down && docker-compose up -d"
+alias dcstop="docker-compose stop"
+alias dcrestart="docker-compose restart"
+alias dcb="docker-compose build"
+alias dcp="docker-compose pull"
+alias dclog="docker-compose logs -f"
+alias dcps="docker-compose ps"
+alias dcrun="docker-compose run"
+
+# Docker Functions
+dexec() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: dexec <container> <command>"
+    return 1
+  fi
+  docker exec -it "$@"
+}
+
+dssh() {
+  local container=${1:-$(docker ps -q | head -n1)}
+  if [[ -z "$container" ]]; then
+    echo "No running containers found!"
+    return 1
+  fi
+  docker exec -it "$container" sh
+}
+
+dbash() {
+  local container=${1:-$(docker ps -q | head -n1)}
+  if [[ -z "$container" ]]; then
+    echo "No running containers found!"
+    return 1
+  fi
+  docker exec -it "$container" bash
+}
+
 # Encryption functions
 ssl_encrypt() {
   openssl aes-256-cbc -a -salt -in $1 -out $2
@@ -92,16 +168,25 @@ alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/download
 pull_with_report() {
   local dir
   dir="$1"
-  if [[ -d $1/.git ]]; then
-    echo $(echo $dir | sed 's/.|\///g') >&2
+  if [[ ! -d $1/.git ]]; then
+    return
   fi
-  out=`git --git-dir=$1/.git --work-tree=$PWD/$1 pull 2>/dev/null`
-  if [[ -n $(echo $out | grep "Already up-to-date") ]]; then
+  
+  echo $(echo $dir | sed 's/.|\///g') >&2
+
+  git --git-dir=$1/.git --work-tree=$PWD/$1 pull &>/dev/null
+  pull_status=$?
+
+  if [[ $pull_status -eq 0 ]]; then
     echo "--- $dir: no changes." >&2
-  elif [[ -n $out ]]; then
+  elif [[ $pull_status -eq 1 ]]; then
+    echo "!!! $dir: merge conflict or error." >&2
+  else
     echo "+++ $dir: pulled changes." >&2
   fi
 }
+
+
 
 pulls() {
   $(
@@ -112,52 +197,6 @@ pulls() {
   wait
   )
 }
-
-hey_gpt() {
-  local prompt=$1
-  local gpt=$(curl https://api.openai.com/v1/chat/completions -s \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{
-      "model": "gpt-4",
-      "messages": [{"role": "user", "content": "'$prompt'"}],
-      "temperature": 0.7
-  }')
-  echo $gpt | jq -r '.choices[0].message.content'
-}
-
-data_gpt() {
-  local prompt=$1
-  local data=$2
-  local prompt_input=$(echo "$prompt: $data" | string join ' ')
-
-  curl https://api.openai.com/v1/chat/completions -s \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{
-      "model": "gpt-4",
-      "messages": [{"role": "user", "content": "'$prompt_input'"}],
-      "temperature": 0.7
-  }' | jq -r '.choices[0].message.content'
-}
-
-img_gpt() {
-  local prompt=$1
-  local create_img=$(curl https://api.openai.com/v1/images/generations -s \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{
-      "prompt": "'$prompt'",
-      "n": 1,
-      "size": "1024x1024"
-  }')
-  echo $create_img | jq
-  local url=$(echo $create_img | jq -r '.data[0].url')
-  local rand_num=$((RANDOM%1000000+1))
-  curl -s $url -o img-"$rand_num".png
-}
-
-alias h='hey_gpt'
 
 # Define Color Variables for later usage
 c_red=$(tput setaf 1)
