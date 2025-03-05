@@ -8,35 +8,30 @@ DEV=$HOME/Developer
 DISABLE_AUTO_UPDATE="true"
 
 # Set up plugins
-plugins=()
-plugins+=(colored-man-pages)
-plugins+=(gh)
-plugins+=(git)
-plugins+=(git-auto-fetch)
-plugins+=(git-prompt)
-plugins+=(heroku)
-plugins+=(macos)
-plugins+=(npm)
-plugins+=(rails)
-plugins+=(rvm)
-plugins+=(sublime)
-plugins+=(sudo)
-plugins+=(vscode)
-plugins+=(yarn)
-plugins+=(zsh-interactive-cd)
-plugins+=(zsh-syntax-highlighting)
+plugins=(
+  colored-man-pages
+  colorize
+  gh
+  git
+  git-auto-fetch
+  git-prompt
+  macos
+  npm
+  rails
+  rvm
+  ssh
+  sudo
+  tailscale
+  vscode
+  zsh-autosuggestions
+  zsh-interactive-cd
+  zsh-syntax-highlighting
+)
 
 # Activate Oh my zsh
 source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Add ssl key & cert path
-export PATH=$PATH:$HOME/.ssl/server.key
-export PATH=$PATH:$HOME/.ssl/server.csr
-
 export PATH="/usr/local/sbin:$PATH"
-
-export PATH=$PATH:$HOME/.cargo/bin
 
 # NVM config
 export NVM_DIR="$HOME/.nvm"
@@ -49,9 +44,5 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 # Add Brew to path.
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

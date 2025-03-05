@@ -145,58 +145,8 @@ alias profileme="history | awk '{print \$2}' | awk 'BEGIN {FS=\"|\"}{print \$1}'
 # Useful environment variables
 export EDITOR=vim
 
-# Set up simple python web server
-# pyserver port sets up the server on port, with default port 8000.
-pyserver() {
-  python -m SimpleHTTPServer $1
-}
-
-# Given an input n, gives a random string of length n.
-# If no input supplied, generates a 64 character string.
-randgen() {
-  if [[ $# -eq 0 ]]; then
-    openssl rand -hex 32
-  else
-    openssl rand -hex $1 | cut -c1-$1
-  fi
-}
-
 # Speedtest alias
 alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
-
-# Pull every git directory in the pwd.
-pull_with_report() {
-  local dir
-  dir="$1"
-  if [[ ! -d $1/.git ]]; then
-    return
-  fi
-  
-  echo $(echo $dir | sed 's/.|\///g') >&2
-
-  git --git-dir=$1/.git --work-tree=$PWD/$1 pull &>/dev/null
-  pull_status=$?
-
-  if [[ $pull_status -eq 0 ]]; then
-    echo "--- $dir: no changes." >&2
-  elif [[ $pull_status -eq 1 ]]; then
-    echo "!!! $dir: merge conflict or error." >&2
-  else
-    echo "+++ $dir: pulled changes." >&2
-  fi
-}
-
-
-
-pulls() {
-  $(
-  local dirs
-  for dir in */; do
-    pull_with_report "$dir" > /dev/null &
-  done
-  wait
-  )
-}
 
 # Define Color Variables for later usage
 c_red=$(tput setaf 1)
