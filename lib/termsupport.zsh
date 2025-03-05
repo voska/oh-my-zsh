@@ -100,6 +100,7 @@ function omz_termsupport_preexec {
   local LINE="${2:gs/%/%%}"
 
   title "$CMD" "%100>...>${LINE}%<<"
+}
 
 autoload -Uz add-zsh-hook
 
