@@ -36,6 +36,10 @@ alias reload="source ~/.zshrc"
 alias tigs="tig status"
 alias pull="git pull"
 
+# brew aliases
+alias b="brew"
+alias bs="brew search"
+
 # Miscellaneous aliases
 alias cat="bat"
 alias ping="prettyping"
