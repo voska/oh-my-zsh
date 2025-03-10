@@ -9,6 +9,7 @@ DISABLE_AUTO_UPDATE="true"
 
 # Set up plugins
 plugins=(
+  brew
   colored-man-pages
   colorize
   gh
