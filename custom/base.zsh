@@ -30,7 +30,7 @@ alias l="ls"
 alias lal='ls -al'
 
 # Configuration aliases
-alias reload="source ~/.zshrc"
+alias reload="omz reload"
 
 # Git aliases
 alias tigs="tig status"
